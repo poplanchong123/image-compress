@@ -14,11 +14,11 @@ interface ImageInputInterface
      * 获取图片MIME类型
      * @return string
      */
-    public function getMimeType(): string;
+    public function getMimeType();
     
     /**
      * 获取原始图片大小（字节）
      * @return int
      */
-    public function getOriginalSize(): int;
+    public function getOriginalSize();
 }
