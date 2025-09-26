@@ -6,9 +6,9 @@ use Poplanchong123\ImageCompress\Exception\ImageCompressException;
 
 class UploadedFileInput implements ImageInputInterface
 {
-    private string $tempPath;
-    private string $mimeType;
-    private int $originalSize;
+    private $tempPath;
+    private $mimeType;
+    private $originalSize;
 
     /**
      * @param array $uploadedFile $_FILES 数组中的文件项
@@ -61,17 +61,17 @@ class UploadedFileInput implements ImageInputInterface
         return $resource;
     }
 
-    public function getMimeType(): string
+    public function getMimeType()
     {
         return $this->mimeType;
     }
 
-    public function getOriginalSize(): int
+    public function getOriginalSize()
     {
         return $this->originalSize;
     }
 
-    private function isValidImageType(): bool
+    private function isValidImageType()
     {
         return in_array($this->mimeType, [
             'image/jpeg',

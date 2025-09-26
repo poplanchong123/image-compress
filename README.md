@@ -25,7 +25,7 @@ composer require Poplanchong123/image-compress
 
 ## 要求
 
-- PHP >= 7.4
+- PHP >= 5.6
 - GD扩展
 - Fileinfo扩展
 

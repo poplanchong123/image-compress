@@ -6,9 +6,9 @@ use Poplanchong123\ImageCompress\Exception\ImageCompressException;
 
 class FileOutput implements ImageOutputInterface
 {
-    private string $outputPath;
+    private $outputPath;
 
-    public function __construct(string $outputPath)
+    public function __construct($outputPath)
     {
         $this->outputPath = $outputPath;
         
@@ -21,9 +21,9 @@ class FileOutput implements ImageOutputInterface
         }
     }
 
-    public function save($resource, string $mimeType, array $options = []): string
+    public function save($resource, $mimeType, $options = array())
     {
-        $quality = $options['quality'] ?? 85;
+        $quality = isset($options['quality']) ? $options['quality'] : 85;
         $success = false;
 
         switch ($mimeType) {

@@ -31,7 +31,7 @@ class ImageCompressor
      * @return mixed 压缩结果
      * @throws ImageCompressException
      */
-    public function quickCompress($input, string $outputType, ?string $outputPath = null)
+    public function quickCompress($input, $outputType, $outputPath = null)
     {
         $inputInstance = InputFactory::create($input);
         $outputInstance = OutputFactory::create($outputType, $outputPath);
@@ -47,7 +47,7 @@ class ImageCompressor
      * @return array 压缩结果数组
      * @throws ImageCompressException
      */
-    public function quickBatchCompress(array $inputs, string $outputType, array $outputPaths = []): array
+    public function quickBatchCompress($inputs, $outputType, $outputPaths = array())
     {
         if ($outputType === OutputFactory::TYPE_FILE && count($inputs) !== count($outputPaths)) {
             throw new ImageCompressException("Number of inputs must match number of output paths");

@@ -19,7 +19,7 @@ class OutputFactory
      * @return ImageOutputInterface
      * @throws ImageCompressException
      */
-    public static function create(string $type, ?string $path = null): ImageOutputInterface
+    public static function create($type, $path = null)
     {
         switch ($type) {
             case self::TYPE_FILE:

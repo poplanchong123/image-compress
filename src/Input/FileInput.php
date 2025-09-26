@@ -6,9 +6,9 @@ use Poplanchong123\ImageCompress\Exception\ImageCompressException;
 
 class FileInput implements ImageInputInterface
 {
-    private string $filePath;
-    private string $mimeType;
-    private int $originalSize;
+    private $filePath;
+    private $mimeType;
+    private $originalSize;
 
     public function __construct(string $filePath)
     {
@@ -49,17 +49,17 @@ class FileInput implements ImageInputInterface
         return $resource;
     }
 
-    public function getMimeType(): string
+    public function getMimeType()
     {
         return $this->mimeType;
     }
 
-    public function getOriginalSize(): int
+    public function getOriginalSize()
     {
         return $this->originalSize;
     }
 
-    private function isValidImageType(): bool
+    private function isValidImageType()
     {
         return in_array($this->mimeType, [
             'image/jpeg',

@@ -6,9 +6,9 @@ use Poplanchong123\ImageCompress\Exception\ImageCompressException;
 
 class Base64Input implements ImageInputInterface
 {
-    private string $imageData;
-    private string $mimeType;
-    private int $originalSize;
+    private $imageData;
+    private $mimeType;
+    private $originalSize;
 
     public function __construct(string $base64String)
     {
@@ -49,17 +49,17 @@ class Base64Input implements ImageInputInterface
         return $resource;
     }
 
-    public function getMimeType(): string
+    public function getMimeType()
     {
         return $this->mimeType;
     }
 
-    public function getOriginalSize(): int
+    public function getOriginalSize()
     {
         return $this->originalSize;
     }
 
-    private function isValidImageType(): bool
+    private function isValidImageType()
     {
         return in_array($this->mimeType, [
             'image/jpeg',

@@ -3,7 +3,7 @@
     "description": "A powerful image compression library similar to TinyPNG",
     "type": "library",
     "require": {
-        "php": ">=7.4",
+        "php": ">=5.6",
         "ext-gd": "*",
         "ext-fileinfo": "*"
     },
