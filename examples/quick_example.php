@@ -32,7 +32,7 @@ try {
     }
 
     // 示例3：处理Base64图片数据
-    $base64Image = "data:image/jpeg;base64," . base64_encode(file_get_contents('path/to/input.jpg'));
+    $base64Image = "data:image/jpeg;base64," . base64_encode(file_get_contents(__DIR__ . '/input/test.jpg'));
     $result3 = $compressor->quickCompress(
         $base64Image,                          // 输入：Base64字符串
         OutputFactory::TYPE_STREAM             // 输出类型：数据流
