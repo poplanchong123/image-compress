@@ -1,0 +1,23 @@
+{
+    "name": "poplanchong123/image-compress",
+    "description": "A powerful image compression library similar to TinyPNG",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "ext-gd": "*",
+        "ext-fileinfo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Poplanchong123\\ImageCompress\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "poplanchong123",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "license": "MIT"
+}

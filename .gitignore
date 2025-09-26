@@ -1,0 +1,5 @@
+vendor
+examples/input
+examples/output
+composer.lock
+composer.phar
