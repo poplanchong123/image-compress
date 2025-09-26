@@ -3,8 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Poplanchong123\ImageCompress\ImageCompressor;
-use Poplanchong123\ImageCompress\Input\UploadedFileInput;
-use Poplanchong123\ImageCompress\Output\FileOutput;
+use Poplanchong123\ImageCompress\Factory\OutputFactory;
 use Poplanchong123\ImageCompress\Exception\ImageCompressException;
 
 // 处理上传的图片
@@ -17,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
             'quality' => 85
         ]);
 
-        // 处理上传的文件
-        $input = new UploadedFileInput($_FILES['image']);
-        
         // 生成输出文件名（这里使用时间戳防止文件名冲突）
         $outputPath = __DIR__ . '/output/' . time() . '_compressed.jpg';
-        $output = new FileOutput($outputPath);
 
         // 压缩图片
-        $result = $compressor->compress($input, $output);
+        $result = $compressor->quickCompress(
+            $_FILES['image'],                   // 输入：上传的文件
+            OutputFactory::TYPE_FILE,           // 输出类型：文件
+            $outputPath                         // 输出路径
+        );
 
         // 返回成功信息
         header('Content-Type: application/json');
