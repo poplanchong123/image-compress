@@ -23,21 +23,30 @@ class InputFactory
             if (file_exists($input)) {
                 return new FileInput($input);
             }
-            
+
             // 检查是否是Base64
-            if (preg_match('/^data:image\/[a-zA-Z]+;base64,/', $input) || 
-                base64_decode($input, true)) {
+            if (
+                preg_match('/^data:image\/[a-zA-Z]+;base64,/', $input) ||
+                base64_decode($input, true)
+            ) {
                 return new Base64Input($input);
             }
-            
+
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $detectedMime = $finfo->buffer($input);
+            $mime = substr($detectedMime, strrpos($detectedMime, '/') + 1);
+            if (in_array($mime, ['jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff'])) {
+                return new Base64Input($input);
+            }
+
             throw new ImageCompressException('Invalid input: String must be a valid file path or Base64 image data');
         }
-        
+
         // 检查是否是上传文件数组
         if (is_array($input) && isset($input['tmp_name'])) {
             return new UploadedFileInput($input);
         }
-        
+
         throw new ImageCompressException('Invalid input type');
     }
 }
