@@ -20,7 +20,7 @@
 ## 安装
 
 ```bash
-composer require Poplanchong123/image-compress
+composer require poplanchong123/image-compress
 ```
 
 ## 要求

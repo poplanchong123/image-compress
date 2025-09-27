@@ -23,6 +23,9 @@ class Base64Input implements ImageInputInterface
         } else {
             // 处理纯Base64字符串
             $this->imageData = base64_decode($base64String, true);
+            if (!$this->imageData) {
+                $this->imageData = $base64String;
+            }
             $finfo = new \finfo(FILEINFO_MIME_TYPE);
             $this->mimeType = $finfo->buffer($this->imageData);
         }
@@ -41,7 +44,7 @@ class Base64Input implements ImageInputInterface
     public function getImageResource()
     {
         $resource = imagecreatefromstring($this->imageData);
-        
+
         if ($resource === false) {
             throw new ImageCompressException("Failed to create image resource from Base64 string");
         }
